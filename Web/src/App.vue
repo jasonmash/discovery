@@ -1,37 +1,26 @@
 <template>
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite!" />
-  <code style="text-align: left;">
-    <pre>{{ JSON.stringify(forecasts, null, 2) }}</pre>
-  </code>
+  <k-navbar name="Discovery">
+    <k-navbar-item to="/" label="Dashboard" icon="home" />
+    <k-navbar-item to="/about" label="About" icon="car"/>
+  </k-navbar>
+  <div id="content" class="p-3">
+    <router-view />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { KNavbar, KNavbarItem } from './components';
 
 export default defineComponent({
   name: 'App',
-  components: {
-    HelloWorld
-  },
-  data() {
-    return { forecasts: [] };
-  },
-  created() {
-    fetch('weatherforecast')
-      .then(res => res.json())
-      .then(forecasts => { this.forecasts = forecasts; });
-  }
+  components: { KNavbar, KNavbarItem }
 })
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grays cale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+  #content {
+    margin-top: var(--k-content-top);
+    margin-left: var(--k-content-left);
+  }
 </style>
