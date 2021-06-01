@@ -6,13 +6,13 @@
   bottom: 0;
   width: var(--k-navbar-width);
   max-width: 100%;
+  overflow-x: hidden;
   
   padding: 0;
   margin: 0;
 
   background: var(--k-navbar-background);
   z-index: 99;
-  overflow-x: visible;
 
   transform: translateX(var(--k-navbar-width-neg));
   transition: all 0.05s ease-in-out;

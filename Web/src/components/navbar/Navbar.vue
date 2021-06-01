@@ -10,15 +10,18 @@
         <i class="fas fa-arrow-left"></i>
       </a>
       <div>
-        {{name}}
+        <img :src="logoLg" :alt="name" width="140"/>
         <small v-if="isDevMode">Dev</small>
       </div>
       <div class="navbar-right"></div>
     </div>
 
     <ul class="sidebar" v-bind:class="{ open: isMenuOpen }">
-      <div class="d-none d-sm-block my-2 ml-3">
-        <span @click="toggleMenu()">{{name}}</span>
+      <div class="d-none d-sm-block my-2">
+        <span @click="toggleMenu()">
+          <img :src="logo" class="d-none d-sm-block d-xl-none" width="140" :alt="name"/>
+          <img :src="logoLg" class="d-none d-xl-block ms-1" width="140" :alt="name"/>
+        </span>
         <span class="ml-2 sidebar-item-title">
           <small v-if="isDevMode">Dev</small>
         </span>
@@ -42,6 +45,8 @@ export default {
 
   props: {
     name: String,
+    logo: String,
+    logoLg: String,
     isDevMode: Boolean
   },
 

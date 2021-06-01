@@ -10,4 +10,6 @@ import KInput from "./input/Input.vue";
 import KNavbar from "./navbar/Navbar.vue";
 import KNavbarItem from "./navbar/NavbarItem.vue";
 
-export { KButton, KDropdown, KDropdownDivider, KDropdownHeader, KDropdownItem, KInput, KNavbar, KNavbarItem };
+import KListDetails from "./list-details/ListDetails.vue";
+
+export { KButton, KDropdown, KDropdownDivider, KDropdownHeader, KDropdownItem, KInput, KNavbar, KNavbarItem, KListDetails };

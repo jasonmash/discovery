@@ -1,4 +1,7 @@
 :root {
+  --k-background: #fff;
+  --k-color: #212529;
+  
   --k-navbar-width: 14rem;
   --k-navbar-width-neg: -14rem;
   --k-navbar-width-sm: 3.8rem;
@@ -18,12 +21,18 @@
 
   --k-content-left: 0;
   --k-content-top: var(--k-navbar-height-xs);
+
+  --k-list-width: 22rem;
 }
 
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --k-background: #000;
+    --k-color: #fff;
+
     --k-navbar-background: #212529;
+    --k-navbar-border: #2e2f30;
 
     --k-navbar-item-color: #eeeeee;
     --k-navbar-item-hover-background: rgba(255,255,255,0.1);
