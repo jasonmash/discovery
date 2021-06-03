@@ -7,9 +7,11 @@ import KDropdownItem from "./dropdown/DropdownItem.vue";
 
 import KInput from "./input/Input.vue";
 
+import KForm from "./form/Form.vue";
+
 import KNavbar from "./navbar/Navbar.vue";
 import KNavbarItem from "./navbar/NavbarItem.vue";
 
 import KListDetails from "./list-details/ListDetails.vue";
 
-export { KButton, KDropdown, KDropdownDivider, KDropdownHeader, KDropdownItem, KInput, KNavbar, KNavbarItem, KListDetails };
+export { KButton, KDropdown, KDropdownDivider, KDropdownHeader, KDropdownItem, KInput, KForm, KNavbar, KNavbarItem, KListDetails };

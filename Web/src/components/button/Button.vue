@@ -1,5 +1,5 @@
 <template>
-  <button type="button" class="btn" :class="classes" :disabled="disabled ? true : null" @click="onClick"
+  <button :type="type" class="btn" :class="classes" :disabled="disabled ? true : null" @click="onClick"
     :aria-disabled="disabled ? true : null" :aria-pressed="pressed ? true : null">
     <slot>
       <i v-if="!!loading" class="fa fa-fw fa-loader fa-spin me-1"></i>
@@ -18,6 +18,10 @@ export default {
   props: {
     label: {
       type: String
+    },
+    type: {
+      type: String,
+      default: "button"
     },
     variant: {
       type: String,
@@ -59,6 +63,7 @@ export default {
         'ps-2': !!props.icon || props.loading
       })),
       onClick(event: any) {
+        if (props.type == "submit") { event.preventDefault(); }
         if (!props.disabled) {
           emit('click');
         }

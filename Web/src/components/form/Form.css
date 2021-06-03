@@ -1,0 +1,10 @@
+.form-panel {
+  background: var(--k-navbar-background);
+  position: fixed;
+  top: 0;
+  box-shadow: 0px -2px 3px rgb(0 0 0 / 40%);
+  z-index: 100;
+  right: 0;
+  bottom: 0;
+  width: 40%;
+}

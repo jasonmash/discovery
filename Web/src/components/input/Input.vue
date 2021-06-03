@@ -1,20 +1,25 @@
 <template>
-  <input :class="classes" :type="type" :value="modelValue" 
-    @input="onInput" @focus="$emit('focus')" @blur="$emit('blur')" @change="$emit('change', $event)"
-    :placeholder="placeholder ? placeholder : label" :aria-label="label"
-    :readonly="readonly ? true : null" :autocomplete="autocomplete"
-    :required="required ? true : null" :aria-required="required ? true : null"
-    :autofocus="autofocus ? true : null" :aria-invalid="state === false"
-    :disabled="disabled ? true : null" :aria-disabled="disabled ? true : null" />
+  <div class="mb-3">
+    <label v-if="label">{{label}}</label>
+    <input :class="classes" :type="type" v-model="input" 
+      @focus="$emit('focus')" @blur="$emit('blur')" @change="$emit('change', $event)"
+      :placeholder="placeholder ? placeholder : label" :aria-label="label"
+      :readonly="readonly ? true : undefined" :autocomplete="autocomplete ? 'true' : 'false'"
+      :required="required ? true : undefined" :aria-required="required ? true : undefined"
+      :autofocus="autofocus ? true : undefined" :aria-invalid="state === false"
+      :disabled="disabled ? true : undefined" :aria-disabled="disabled ? true : undefined" />
+  </div>
 </template>
 
 <script lang="ts">
 import { reactive, computed } from 'vue';
+import useInputValidator from "./input-validator";
+import { minLength } from "./validators";
 
 export default {
   name: 'k-input',
-  
-  emits: ['update:modelValue', 'focus', 'blur'],
+  // 
+  emits: ['update:modelValue', 'change', 'focus', 'blur'],
 
   props: {
     modelValue: String,
@@ -65,18 +70,25 @@ export default {
 
   setup(props, { emit }) {
     props = reactive(props);
+
+    const { input, errors } = useInputValidator(
+      props.modelValue,
+      [minLength(3)],
+      (value: string) => {
+        emit('update:modelValue', value);
+      }
+    );
     return {
       classes: computed(() => ({
         'form-control': true,
         [`form-control-${props.size || 'md'}`]: true,
         'disabled': props.disabled,
         'form-control-plaintext': props.plaintext,
-        'is-invalid': props.state === false,
+        'is-invalid': !!errors.value && errors.value.find(v => v !== null), //.state === false,
         'is-valid': props.state === true
       })),
-      onInput(event: any) {
-        emit('update:modelValue', event.target.value)
-      }
+      input,
+      errors
     }
   },
 };
