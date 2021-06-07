@@ -29,7 +29,7 @@ namespace Discovery.Controllers
 
         // GET: api/DefectCategories/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<DefectCategory>> GetDefectCategory(long id)
+        public async Task<ActionResult<DefectCategory>> GetDefectCategory(int id)
         {
             var defectcategory = await _context.DefectCategories.FindAsync(id);
 
@@ -43,7 +43,7 @@ namespace Discovery.Controllers
 
         // PUT: api/DefectCategories/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDefectCategory(long id, DefectCategory defectcategory)
+        public async Task<IActionResult> PutDefectCategory(int id, DefectCategory defectcategory)
         {
             if (id != defectcategory.Id)
             {
@@ -76,7 +76,7 @@ namespace Discovery.Controllers
 
         // DELETE: api/DefectCategories/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteDefectCategory(long id)
+        public async Task<IActionResult> DeleteDefectCategory(int id)
         {
             var defectcategory = await _context.DefectCategories.FindAsync(id);
             if (defectcategory == null)
@@ -90,7 +90,7 @@ namespace Discovery.Controllers
             return NoContent();
         }
 
-        private bool DefectCategoryExists(long id)
+        private bool DefectCategoryExists(int id)
         {
             return _context.DefectCategories.Any(e => e.Id == id);
         }

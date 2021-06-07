@@ -29,9 +29,9 @@ namespace Discovery.Controllers
 
         // GET: api/Parts/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Part>> GetPart(long id)
+        public async Task<ActionResult<Part>> GetPart(int id)
         {
-            var part = await _context.Parts.FindAsync(id);
+            var part = await _context.Parts.Include(p => p.DefectCategories).FirstOrDefaultAsync(p => p.Id == id);
 
             if (part == null)
             {
@@ -43,7 +43,7 @@ namespace Discovery.Controllers
 
         // PUT: api/Parts/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPart(long id, Part part)
+        public async Task<IActionResult> PutPart(int id, Part part)
         {
             if (id != part.Id)
             {
@@ -76,7 +76,7 @@ namespace Discovery.Controllers
 
         // DELETE: api/Parts/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePart(long id)
+        public async Task<IActionResult> DeletePart(int id)
         {
             var part = await _context.Parts.FindAsync(id);
             if (part == null)
@@ -90,7 +90,7 @@ namespace Discovery.Controllers
             return NoContent();
         }
 
-        private bool PartExists(long id)
+        private bool PartExists(int id)
         {
             return _context.Parts.Any(e => e.Id == id);
         }
