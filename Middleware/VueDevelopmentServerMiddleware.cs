@@ -69,7 +69,7 @@ namespace Discovery.Middleware
             Debug.WriteLine($"Starting Vue dev server on port {portNumber}...");
 
             var npmScriptRunner = new NpmScriptRunner(
-                sourcePath, npmScriptName, $"--port {portNumber} --host localhost", null);
+                sourcePath, npmScriptName, $"--port {portNumber} --host 0.0.0.0", null);
             npmScriptRunner.AttachToLogger(logger);
 
             Match startDevelopmentServerLine;

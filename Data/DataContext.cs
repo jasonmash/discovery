@@ -17,5 +17,6 @@ namespace Discovery.Data
         public DbSet<Defect> Defects { get; set; }
         public DbSet<DefectCategory> DefectCategories { get; set; }
         public DbSet<Part> Parts { get; set; }
+        public DbSet<Image> Images { get; set; }
     }
 }

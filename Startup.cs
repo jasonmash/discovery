@@ -53,7 +53,7 @@ namespace Discovery
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+        //    app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
