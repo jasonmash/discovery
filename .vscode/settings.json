@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/cd68ffd0-6998-450d-91fe-43030b64f9e7/resourceGroups/discovery/providers/Microsoft.Web/sites/ifm-discovery",
+  "appService.deploySubpath": "publish"
+}

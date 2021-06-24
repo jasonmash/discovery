@@ -4,6 +4,7 @@
     <k-navbar-item to="/parts" label="Parts" icon="car-bus"/>
     <k-navbar-item to="/defect-categories" label="Defect Categories" icon="tags"/>
     <k-navbar-item to="/defects" label="Defects" icon="car-crash"/>
+    <k-navbar-item to="/images" label="Images" icon="camera"/>
     <k-navbar-item to="/about" label="About" icon="circle-info"/>
   </k-navbar>
   <div id="content" class="p-3">

@@ -22,9 +22,9 @@ namespace Discovery.Controllers
 
         // GET: api/Images
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Image>>> GetImages()
+        public async Task<ActionResult<IEnumerable<dynamic>>> GetImages()
         {
-            return await _context.Images.ToListAsync();
+            return await _context.Images.Select(n => new { Id = n.Id, Timestamp = n.Timestamp}).ToListAsync();
         }
 
         // GET: api/Images/5
@@ -71,7 +71,7 @@ namespace Discovery.Controllers
             _context.Images.Add(image);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetImage), new { id = image.Id }, image);
+            return CreatedAtAction(nameof(GetImage), new { id = image.Id }, new { id = image.Id });
         }
 
         // DELETE: api/Images/5

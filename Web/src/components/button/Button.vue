@@ -1,6 +1,6 @@
 <template>
-  <button :type="type" class="btn" :class="classes" :disabled="disabled ? true : null" @click="onClick"
-    :aria-disabled="disabled ? true : null" :aria-pressed="pressed ? true : null">
+  <button :type="type" class="btn" :class="classes" :disabled="disabled ? true : undefined" @click="onClick"
+    :aria-disabled="disabled ? true : undefined" :aria-pressed="pressed ? true : undefined">
     <slot>
       <i v-if="!!loading" class="fa fa-fw fa-loader fa-spin me-1"></i>
       <i v-else-if="!!icon" :class="`fa fa-fw fa-${icon} me-1`"></i>
@@ -21,7 +21,11 @@ export default {
     },
     type: {
       type: String,
-      default: "button"
+      default: "button",
+      validator: function (value: string) {
+        // The value must match one of these strings
+        return ["button", "submit", "reset"].indexOf(value) !== -1
+      }
     },
     variant: {
       type: String,
@@ -51,7 +55,7 @@ export default {
 
   emits: ['click'],
 
-  setup(props, { emit }) {
+  setup(props: any, { emit }: any) {
     props = reactive(props);
     return {
       classes: computed(() => ({
