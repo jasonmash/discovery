@@ -17,6 +17,8 @@
       <div v-if="selectedDefect">
         <h1>{{selectedDefect.title}} <small>#{{selectedDefect.id}}</small></h1>
         <p>{{selectedDefect.description}}</p>
+
+        <k-button variant="danger" @click="deleteDefect">Delete</k-button>
       </div>
     </template>
   </k-list-details>
@@ -25,7 +27,7 @@
 <script lang="ts">
 import { KListDetails, KButton, KForm, KInput } from '../components';
 import { defineComponent, ref, watch } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { Defect } from '../models/Defect';
 import { Part } from '../models/Part';
 
@@ -39,6 +41,7 @@ export default defineComponent({
   components: { KListDetails, KButton, KForm, KInput },
   setup() {
     const route = useRoute();
+    const router = useRouter();
     const selectedId = ref(route.params.id);
     const showDetails = ref(!!selectedId.value);
     const defects = ref([] as Defect[]);
@@ -87,6 +90,18 @@ export default defineComponent({
       });
     };
 
+    var deleteDefect = () => {
+      fetch('/api/defects/' + selectedId.value, {
+        method: 'DELETE',
+      })
+      .then(res => {
+        if (res.ok) {
+          defects.value.splice(defects.value.findIndex(i => i.id.toString() == selectedId.value), 1);
+          router.replace("/defects");
+        }
+      });
+    };
+
     return {
       selectedId,
       showDetails,
@@ -94,7 +109,8 @@ export default defineComponent({
       selectedDefect,
       showForm,
       addDefect,
-      newDefect
+      newDefect,
+      deleteDefect
     }
   }
 })

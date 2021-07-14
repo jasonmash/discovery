@@ -3,9 +3,9 @@
     <k-navbar-item to="/" label="Dashboard" icon="home" />
     <k-navbar-item to="/parts" label="Parts" icon="car-bus"/>
     <k-navbar-item to="/defect-categories" label="Defect Categories" icon="tags"/>
-    <k-navbar-item to="/defects" label="Defects" icon="car-crash"/>
+    <!-- <k-navbar-item to="/defects" label="Defects" icon="car-crash"/>
     <k-navbar-item to="/images" label="Images" icon="camera"/>
-    <k-navbar-item to="/about" label="About" icon="circle-info"/>
+    <k-navbar-item to="/about" label="About" icon="circle-info"/> -->
   </k-navbar>
   <div id="content" class="p-3">
     <router-view />
@@ -42,5 +42,12 @@ export default defineComponent({
   html, body {
     background: var(--k-background);
     color: var(--k-color);
+  }
+
+  .nav-link {
+    color: #0c677e !important;
+  }
+  .nav-link.active {
+    color: #000 !important;
   }
 </style>

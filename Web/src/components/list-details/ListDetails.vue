@@ -3,7 +3,7 @@
     <div class="list-panel p-3">
       <slot name="list"></slot>
     </div>
-    <div class="details-panel p-3" v-if="showDetails">
+    <div class="details-panel bg-light p-3" v-if="showDetails">
       <div class="divider" v-if="showDetails">
         <button class="btn btn-secondary divider-toggle" @click="isFullWidth = !isFullWidth">
           <i :class="`fa fa-chevron-${isFullWidth ? 'right' : 'left' }`"></i>

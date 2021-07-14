@@ -14,4 +14,6 @@ import KNavbarItem from "./navbar/NavbarItem.vue";
 
 import KListDetails from "./list-details/ListDetails.vue";
 
+import "./activities.css";
+
 export { KButton, KDropdown, KDropdownDivider, KDropdownHeader, KDropdownItem, KInput, KForm, KNavbar, KNavbarItem, KListDetails };
